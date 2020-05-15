@@ -41,7 +41,4 @@ class connect{
             throw e;
         }
     }
-    public static void main(String[] args) {
-        connect tes;
-    }
 }
