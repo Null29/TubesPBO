@@ -21,7 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `tubes_pbo`
 --
-
+CREATE DATABASE tubes_pbo;
+USE tubes_pbo;
 -- --------------------------------------------------------
 
 --
