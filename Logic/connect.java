@@ -1,7 +1,7 @@
 import  java.sql.*;
 //import  com.mysql.jdbc.*;
 class connect{
-    Connection conn;
+    public Connection conn;
     connect() throws SQLException, ClassNotFoundException {
         try{
             conn = connectToDB();
@@ -31,11 +31,11 @@ class connect{
             throw e;
         }
     }
-    protected  Statement st(String stm) throws SQLException, ClassNotFoundException {
+    protected  Statement st() throws SQLException, ClassNotFoundException {
         try{
             if(conn != null && !conn.isValid(0))
                 conn = connectToDB();
-            return conn.prepareStatement(stm);
+            return conn.createStatement();
         }
         catch(Exception e){
             throw e;
