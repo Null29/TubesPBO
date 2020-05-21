@@ -4,24 +4,96 @@
  * and open the template in the editor.
  */
 package pbotubes;
-
-import javax.swing.ImageIcon;
-
+import Logic.*;
+import java.sql.SQLException;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 /**
  *
- * @author Aris Febriansyah
+ * @author HUMAIDI
  */
-public class history extends javax.swing.JFrame {
+public class history extends javax.swing.JPanel {
 
     /**
      * Creates new form history
      */
-        int xmouse;
-        int ymouse;
-    public history() {
-        initComponents();
+    user pengguna;
+    Vector<Vector<String>> h;
+    Vector<String> a;
+    public void refresh(){
+        try {
+            h = pengguna.history();
+        } catch (ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(this, "Driver not found!",
+                "ERROR", JOptionPane.ERROR_MESSAGE);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Databasee Error!",
+                "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            h,
+            a
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+    }
+    public history(user temp){
+        pengguna = temp;
+        a = new Vector<>();
+        a.add("No Transaksi");
+        a.add("Tanggal");
+        a.add("ID Pelanggan");
+        a.add("Total");
+        try {
+            h = pengguna.history();
+        } catch (ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(this, "Driver not found!",
+                "ERROR", JOptionPane.ERROR_MESSAGE);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Databasee Error!",
+                "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+        initComponents(temp);
+        refresh();
     }
 
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+    private void initComponents(user temp) {
+
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+
+        setLayout(null);
+
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(560, 460));
+       
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            h,
+            a
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable1.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(jTable1);
+
+        add(jScrollPane1);
+        jScrollPane1.setBounds(0, 0, 560, 460);
+    }// </editor-fold>                        
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -31,38 +103,12 @@ public class history extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(680, 566));
-        setSize(new java.awt.Dimension(680, 566));
-        getContentPane().setLayout(null);
+        setLayout(null);
 
-        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel2MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel2MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel2MouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel2MousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jLabel2MouseReleased(evt);
-            }
-        });
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(627, 10, 40, 40);
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(560, 460));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -72,123 +118,26 @@ public class history extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "No Transaksi", "Tanggal", "ID Pelanggan", "Total"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(158, 70, 477, 438);
-
-        jLabel3.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseDragged(java.awt.event.MouseEvent evt) {
-                jLabel3MouseDragged(evt);
-            }
-        });
-        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel3MousePressed(evt);
-            }
-        });
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(0, 0, 680, 566);
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pbotubes/images/historypage.png"))); // NOI18N
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 680, 566);
-
-        jButton1.setOpaque(false);
-        getContentPane().add(jButton1);
-        jButton1.setBounds(8, 525, 100, 9);
-
-        pack();
+        add(jScrollPane1);
+        jScrollPane1.setBounds(0, 0, 560, 460);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        // TODO add your handling code here:
-        this.dispose();
-    }//GEN-LAST:event_jLabel2MouseClicked
-
-    private void jLabel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseEntered
-        // TODO add your handling code here:
-        ImageIcon hs = new ImageIcon(getClass().getResource("/pbotubes/images/closeho.png"));
-        jLabel2.setIcon(hs);
-    }//GEN-LAST:event_jLabel2MouseEntered
-
-    private void jLabel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseExited
-        // TODO add your handling code here:
-        ImageIcon hs = new ImageIcon(getClass().getResource("/pbotubes/images/close_1.png"));
-        jLabel2.setIcon(hs);
-    }//GEN-LAST:event_jLabel2MouseExited
-
-    private void jLabel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MousePressed
-        // TODO add your handling code here:
-        ImageIcon hs = new ImageIcon(getClass().getResource("/pbotubes/images/closec.png"));
-        jLabel2.setIcon(hs);
-    }//GEN-LAST:event_jLabel2MousePressed
-
-    private void jLabel2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseReleased
-        // TODO add your handling code here:
-        ImageIcon hs = new ImageIcon(getClass().getResource("/pbotubes/images/close_1.png"));
-        jLabel2.setIcon(hs);
-    }//GEN-LAST:event_jLabel2MouseReleased
-
-    private void jLabel3MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseDragged
-        // TODO add your handling code here:
-        int x = evt.getXOnScreen();
-        int y = evt.getYOnScreen();
-        
-        
-        this.setLocation(x- xmouse, y- ymouse);
-        System.out.println(x+","+y);
-    }//GEN-LAST:event_jLabel3MouseDragged
-
-    private void jLabel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MousePressed
-        // TODO add your handling code here:
-        xmouse = evt.getX();
-        ymouse = evt.getY();
-    }//GEN-LAST:event_jLabel3MousePressed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(history.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(history.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(history.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(history.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new history().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables

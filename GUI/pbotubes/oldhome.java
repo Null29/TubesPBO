@@ -7,24 +7,19 @@ package pbotubes;
 
 import java.awt.Color;
 import javax.swing.ImageIcon;
-import Logic.login;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 
 /**
  *
  * @author Aris Febriansyah
  */
-public class singupform extends javax.swing.JFrame {
+public class oldhome extends javax.swing.JFrame {
 
     /**
-     * Creates new form singupform
+     * Creates new form oldhome
      */
         int xmouse;
         int ymouse;
-    public singupform() {
+    public oldhome() {
         initComponents();
         this.setBackground(new Color(0,0,0,0));
     }
@@ -39,12 +34,9 @@ public class singupform extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel2 = new javax.swing.JLabel();
-        user = new javax.swing.JTextField();
-        pass = new javax.swing.JPasswordField();
-        confpass = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -71,29 +63,7 @@ public class singupform extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(632, 9, 40, 40);
-
-        user.setBorder(null);
-        user.setOpaque(false);
-        getContentPane().add(user);
-        user.setBounds(178, 180, 320, 55);
-
-        pass.setBorder(null);
-        getContentPane().add(pass);
-        pass.setBounds(178, 275, 320, 55);
-
-        confpass.setBorder(null);
-        getContentPane().add(confpass);
-        confpass.setBounds(178, 367, 320, 53);
-
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pbotubes/images/tombolsignup.png"))); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(223, 458, 229, 57);
+        jLabel2.setBounds(625, 10, 40, 40);
 
         jLabel3.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
@@ -108,42 +78,14 @@ public class singupform extends javax.swing.JFrame {
         getContentPane().add(jLabel3);
         jLabel3.setBounds(0, 0, 680, 566);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pbotubes/images/singupmantap.png"))); // NOI18N
-        jLabel1.setText("jLabel1");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pbotubes/images/homepage.png"))); // NOI18N
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 680, 566);
+        getContentPane().add(jButton1);
+        jButton1.setBounds(8, 525, 100, 25);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        // TODO add your handling code here:
-        this.dispose();
-    }//GEN-LAST:event_jLabel2MouseClicked
-
-    private void jLabel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseEntered
-        // TODO add your handling code here:
-        ImageIcon signup = new ImageIcon(getClass().getResource("/pbotubes/images/closeho.png"));
-        jLabel2.setIcon(signup);
-    }//GEN-LAST:event_jLabel2MouseEntered
-
-    private void jLabel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseExited
-        // TODO add your handling code here:
-        ImageIcon signup = new ImageIcon(getClass().getResource("/pbotubes/images/close_1.png"));
-        jLabel2.setIcon(signup);
-    }//GEN-LAST:event_jLabel2MouseExited
-
-    private void jLabel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MousePressed
-        // TODO add your handling code here:
-        ImageIcon signup = new ImageIcon(getClass().getResource("/pbotubes/images/closec.png"));
-        jLabel2.setIcon(signup);
-    }//GEN-LAST:event_jLabel2MousePressed
-
-    private void jLabel2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseReleased
-        // TODO add your handling code here:
-        ImageIcon signup = new ImageIcon(getClass().getResource("/pbotubes/images/close_1.png"));
-        jLabel2.setIcon(signup);
-    }//GEN-LAST:event_jLabel2MouseReleased
 
     private void jLabel3MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseDragged
         // TODO add your handling code here:
@@ -161,30 +103,34 @@ public class singupform extends javax.swing.JFrame {
         ymouse = evt.getY();
     }//GEN-LAST:event_jLabel3MousePressed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         // TODO add your handling code here:
-        try{
-            if (pass.getText().equals(confpass.getText())) {
-                if(login.daftar(user.getText(), pass.getText())){
-                    JOptionPane.showMessageDialog(this,"Daftar Sukses!");
-                }
-                else{
-                    JOptionPane.showMessageDialog(this, "Username telah digunakan!", 
-                                                "ERROR", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-            else{
-                JOptionPane.showMessageDialog(this, "Password dan konfirmasi password tidak sama", 
-                                                "ERROR", JOptionPane.ERROR_MESSAGE);
-            }
-        }catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "Databasee Error!", 
-                                                "ERROR", JOptionPane.ERROR_MESSAGE);
-        }catch (ClassNotFoundException ex) {
-            JOptionPane.showMessageDialog(this, "Driver Error!", 
-                                                "ERROR", JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void jLabel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseEntered
+        // TODO add your handling code here:
+        ImageIcon hm = new ImageIcon(getClass().getResource("/pbotubes/images/closeho.png"));
+        jLabel2.setIcon(hm);
+    }//GEN-LAST:event_jLabel2MouseEntered
+
+    private void jLabel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseExited
+        // TODO add your handling code here:
+        ImageIcon hm = new ImageIcon(getClass().getResource("/pbotubes/images/close_1.png"));
+        jLabel2.setIcon(hm);
+    }//GEN-LAST:event_jLabel2MouseExited
+
+    private void jLabel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MousePressed
+        // TODO add your handling code here:
+        ImageIcon hm = new ImageIcon(getClass().getResource("/pbotubes/images/closec.png"));
+        jLabel2.setIcon(hm);
+    }//GEN-LAST:event_jLabel2MousePressed
+
+    private void jLabel2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseReleased
+        // TODO add your handling code here:
+        ImageIcon hm = new ImageIcon(getClass().getResource("/pbotubes/images/close_1.png"));
+        jLabel2.setIcon(hm);
+    }//GEN-LAST:event_jLabel2MouseReleased
 
     /**
      * @param args the command line arguments
@@ -203,31 +149,29 @@ public class singupform extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(singupform.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(oldhome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(singupform.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(oldhome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(singupform.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(oldhome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(singupform.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(oldhome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new singupform().setVisible(true);
+                new oldhome().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPasswordField confpass;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPasswordField pass;
-    private javax.swing.JTextField user;
     // End of variables declaration//GEN-END:variables
 }

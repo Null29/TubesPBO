@@ -15,14 +15,14 @@ import javax.swing.JOptionPane;
  *
  * @author Aris Febriansyah
  */
-public class loginform extends javax.swing.JFrame {
+public class loginframe extends javax.swing.JFrame {
 
     /**
      * Creates new form loginform
      */
         int xmouse;
         int ymouse;
-    public loginform() {
+    public loginframe() {
         initComponents();
         this.setBackground(new Color(0,0,0,0));
     }
@@ -37,10 +37,10 @@ public class loginform extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel2 = new javax.swing.JLabel();
-        user = new javax.swing.JTextField();
-        pass = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        panel1 = new pbotubes.login(this);
+        panel = new javax.swing.JPanel();
+        sign = new javax.swing.JButton();
+        log = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -49,6 +49,11 @@ public class loginform extends javax.swing.JFrame {
         setUndecorated(true);
         setPreferredSize(new java.awt.Dimension(680, 566));
         setSize(new java.awt.Dimension(680, 566));
+        addHierarchyListener(new java.awt.event.HierarchyListener() {
+            public void hierarchyChanged(java.awt.event.HierarchyEvent evt) {
+                formHierarchyChanged(evt);
+            }
+        });
         getContentPane().setLayout(null);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pbotubes/images/close_1.png"))); // NOI18N
@@ -73,39 +78,35 @@ public class loginform extends javax.swing.JFrame {
         getContentPane().add(jLabel2);
         jLabel2.setBounds(631, 10, 40, 40);
 
-        user.setBorder(null);
-        user.setOpaque(false);
-        user.addActionListener(new java.awt.event.ActionListener() {
+        panel1.setLayout(null);
+        getContentPane().add(panel1);
+        panel1.setBounds(70, 130, 480, 330);
+
+        panel = new pbotubes.signup();
+        panel.setLayout(null);
+        panel.setVisible(false);
+        getContentPane().add(panel);
+        panel.setBounds(75, 130, 460, 390);
+
+        sign.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pbotubes/images/signuppindah.png"))); // NOI18N
+        log.setVisible(false);
+        sign.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userActionPerformed(evt);
+                signActionPerformed(evt);
             }
         });
-        getContentPane().add(user);
-        user.setBounds(178, 180, 320, 55);
+        getContentPane().add(sign);
+        sign.setBounds(119, 60, 220, 57);
 
-        pass.setBorder(null);
-        pass.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        pass.setOpaque(false);
-        getContentPane().add(pass);
-        pass.setBounds(178, 275, 320, 55);
-
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pbotubes/images/tombollogin.png"))); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        log.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pbotubes/images/loginpindah.png"))); // NOI18N
+        log.setVisible(false);
+        log.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                logActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(225, 360, 230, 57);
-
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pbotubes/images/loginpindah.png"))); // NOI18N
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton2);
-        jButton2.setBounds(336, 60, 230, 57);
+        getContentPane().add(log);
+        log.setBounds(336, 60, 230, 57);
 
         jLabel3.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
@@ -120,7 +121,7 @@ public class loginform extends javax.swing.JFrame {
         getContentPane().add(jLabel3);
         jLabel3.setBounds(10, 0, 680, 566);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pbotubes/images/loginmantap.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pbotubes/images/mainframe.png"))); // NOI18N
         jLabel1.setToolTipText("");
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 680, 566);
@@ -171,37 +172,25 @@ public class loginform extends javax.swing.JFrame {
         ymouse = evt.getY();
     }//GEN-LAST:event_jLabel3MousePressed
 
-    private void userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userActionPerformed
+    private void logActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_userActionPerformed
+        log.setVisible(false);
+        sign.setVisible(true);
+        panel1.setVisible(true);
+        panel.setVisible(false);
+    }//GEN-LAST:event_logActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void formHierarchyChanged(java.awt.event.HierarchyEvent evt) {//GEN-FIRST:event_formHierarchyChanged
         // TODO add your handling code here:
-        user active;
-        try {
-            active = Logic.login.auth(user.getText(), pass.getText());
-            if(active != null){
-                JOptionPane.showMessageDialog(this,"Login Sukses!");
-            }
-            else{
-                JOptionPane.showMessageDialog(this, "Password dam username yang anda masukkan tidak sesuai!", 
-                                                "ERROR", JOptionPane.ERROR_MESSAGE);
-            }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "Databasee Error!", 
-                                                "ERROR", JOptionPane.ERROR_MESSAGE);
-        } catch (ClassNotFoundException ex) {
-            JOptionPane.showMessageDialog(this, "Driver Error!", 
-                                                "ERROR", JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_formHierarchyChanged
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void signActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signActionPerformed
         // TODO add your handling code here:
-        this.dispose();
-        singupform a = new singupform();
-        a.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+        log.setVisible(true);
+        sign.setVisible(false);
+        panel1.setVisible(false);
+        panel.setVisible(true);
+    }//GEN-LAST:event_signActionPerformed
 
     /**
      * @param args the command line arguments
@@ -219,34 +208,35 @@ public class loginform extends javax.swing.JFrame {
                     break;
                 }
             }
-            loginform a = new loginform();
+            loginframe a = new loginframe();
             a.setVisible(true);
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(loginform.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(loginframe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(loginform.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(loginframe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(loginform.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(loginframe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(loginform.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(loginframe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
         
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new loginform().setVisible(true);
+                new loginframe().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPasswordField pass;
-    private javax.swing.JTextField user;
+    private javax.swing.JButton log;
+    private javax.swing.JPanel panel;
+    private javax.swing.JPanel panel1;
+    private javax.swing.JButton sign;
     // End of variables declaration//GEN-END:variables
 }

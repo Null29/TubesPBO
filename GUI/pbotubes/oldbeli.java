@@ -7,22 +7,19 @@ package pbotubes;
 
 import java.awt.Color;
 import javax.swing.ImageIcon;
-import Logic.*;
-import java.sql.SQLException;
-import javax.swing.JOptionPane;
 
 /**
  *
  * @author Aris Febriansyah
  */
-public class loginform extends javax.swing.JFrame {
+public class oldbeli extends javax.swing.JFrame {
 
     /**
-     * Creates new form loginform
+     * Creates new form oldbeli
      */
         int xmouse;
         int ymouse;
-    public loginform() {
+    public oldbeli() {
         initComponents();
         this.setBackground(new Color(0,0,0,0));
     }
@@ -37,22 +34,18 @@ public class loginform extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel2 = new javax.swing.JLabel();
-        user = new javax.swing.JTextField();
-        pass = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(680, 566));
         setSize(new java.awt.Dimension(680, 566));
         getContentPane().setLayout(null);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pbotubes/images/close_1.png"))); // NOI18N
-        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel2MouseClicked(evt);
@@ -71,41 +64,17 @@ public class loginform extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(631, 10, 40, 40);
+        jLabel2.setBounds(625, 10, 40, 40);
 
-        user.setBorder(null);
-        user.setOpaque(false);
-        user.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userActionPerformed(evt);
-            }
-        });
-        getContentPane().add(user);
-        user.setBounds(178, 180, 320, 55);
+        jTextField1.setBorder(null);
+        jTextField1.setOpaque(false);
+        getContentPane().add(jTextField1);
+        jTextField1.setBounds(174, 115, 380, 47);
 
-        pass.setBorder(null);
-        pass.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        pass.setOpaque(false);
-        getContentPane().add(pass);
-        pass.setBounds(178, 275, 320, 55);
-
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pbotubes/images/tombollogin.png"))); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(225, 360, 230, 57);
-
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pbotubes/images/loginpindah.png"))); // NOI18N
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton2);
-        jButton2.setBounds(336, 60, 230, 57);
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "10.000", "20.000", "50.000", "100.000", "200.000", "500.000" }));
+        jComboBox1.setOpaque(false);
+        getContentPane().add(jComboBox1);
+        jComboBox1.setBounds(164, 200, 403, 50);
 
         jLabel3.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
@@ -118,41 +87,46 @@ public class loginform extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(10, 0, 680, 566);
+        jLabel3.setBounds(0, 0, 680, 566);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pbotubes/images/loginmantap.png"))); // NOI18N
-        jLabel1.setToolTipText("");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pbotubes/images/transaksipage.png"))); // NOI18N
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 680, 566);
+
+        jButton1.setText("jButton1");
+        getContentPane().add(jButton1);
+        jButton1.setBounds(8, 525, 100, 23);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void jLabel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseEntered
-        ImageIcon login = new ImageIcon(getClass().getResource("/pbotubes/images/closeho.png"));
-        jLabel2.setIcon(login);
+        // TODO add your handling code here:
+        ImageIcon bl = new ImageIcon(getClass().getResource("/pbotubes/images/closeho.png"));
+        jLabel2.setIcon(bl);
     }//GEN-LAST:event_jLabel2MouseEntered
 
     private void jLabel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseExited
         // TODO add your handling code here:
-        ImageIcon login = new ImageIcon(getClass().getResource("/pbotubes/images/close_1.png"));
-        jLabel2.setIcon(login);
+        ImageIcon bl = new ImageIcon(getClass().getResource("/pbotubes/images/close_1.png"));
+        jLabel2.setIcon(bl);
     }//GEN-LAST:event_jLabel2MouseExited
 
     private void jLabel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MousePressed
         // TODO add your handling code here:
-        ImageIcon login = new ImageIcon(getClass().getResource("/pbotubes/images/closec.png"));
-        jLabel2.setIcon(login);
+        ImageIcon bl = new ImageIcon(getClass().getResource("/pbotubes/images/closec.png"));
+        jLabel2.setIcon(bl);
     }//GEN-LAST:event_jLabel2MousePressed
 
     private void jLabel2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseReleased
         // TODO add your handling code here:
-        ImageIcon login = new ImageIcon(getClass().getResource("/pbotubes/images/close_1.png"));
-        jLabel2.setIcon(login);
+        ImageIcon bl = new ImageIcon(getClass().getResource("/pbotubes/images/close_1.png"));
+        jLabel2.setIcon(bl);
     }//GEN-LAST:event_jLabel2MouseReleased
 
     private void jLabel3MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseDragged
@@ -161,7 +135,7 @@ public class loginform extends javax.swing.JFrame {
         int y = evt.getYOnScreen();
         
         
-        this.setLocation(x - xmouse,y - ymouse);
+        this.setLocation(x- xmouse, y- ymouse);
         System.out.println(x+","+y);
     }//GEN-LAST:event_jLabel3MouseDragged
 
@@ -170,38 +144,6 @@ public class loginform extends javax.swing.JFrame {
         xmouse = evt.getX();
         ymouse = evt.getY();
     }//GEN-LAST:event_jLabel3MousePressed
-
-    private void userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_userActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        user active;
-        try {
-            active = Logic.login.auth(user.getText(), pass.getText());
-            if(active != null){
-                JOptionPane.showMessageDialog(this,"Login Sukses!");
-            }
-            else{
-                JOptionPane.showMessageDialog(this, "Password dam username yang anda masukkan tidak sesuai!", 
-                                                "ERROR", JOptionPane.ERROR_MESSAGE);
-            }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "Databasee Error!", 
-                                                "ERROR", JOptionPane.ERROR_MESSAGE);
-        } catch (ClassNotFoundException ex) {
-            JOptionPane.showMessageDialog(this, "Driver Error!", 
-                                                "ERROR", JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        this.dispose();
-        singupform a = new singupform();
-        a.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -219,34 +161,32 @@ public class loginform extends javax.swing.JFrame {
                     break;
                 }
             }
-            loginform a = new loginform();
-            a.setVisible(true);
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(loginform.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(oldbeli.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(loginform.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(oldbeli.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(loginform.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(oldbeli.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(loginform.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(oldbeli.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        
+        //</editor-fold>
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new loginform().setVisible(true);
+                new oldbeli().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPasswordField pass;
-    private javax.swing.JTextField user;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
